@@ -1,0 +1,13 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        # Step 1: Trim leading and trailing spaces
+        s = s.strip()
+        
+        # Step 2: Split the string into words using default whitespace splitting
+        words = s.split()
+        
+        # Step 3: Reverse the list of words
+        reversed_words = words[::-1]
+        
+        # Step 4: Join the reversed words into a string with single space separation
+        return ' '.join(reversed_words)
