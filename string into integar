@@ -1,0 +1,37 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        # Step 1: Strip leading whitespaces
+        s = s.lstrip()
+        
+        # Step 2: Handle empty string after stripping
+        if not s:
+            return 0
+        
+        # Step 3: Handle sign determination
+        sign = 1
+        if s[0] == '-':
+            sign = -1
+            s = s[1:]
+        elif s[0] == '+':
+            s = s[1:]
+        
+        # Step 4: Convert the digits to an integer
+        result = 0
+        for char in s:
+            if char.isdigit():
+                result = result * 10 + int(char)
+            else:
+                break
+        
+        # Step 5: Apply the sign
+        result *= sign
+        
+        # Step 6: Clamp to 32-bit signed integer range
+        int_min = -2**31
+        int_max = 2**31 - 1
+        if result < int_min:
+            return int_min
+        elif result > int_max:
+            return int_max
+        else:
+            return result
